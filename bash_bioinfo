@@ -72,5 +72,17 @@ function multifasta_seqlen_decrease {
 #SRA files can be converted to fastq. Hence, when working with public data, keeping only the SRA files (generally smaller than fastq) can save up a significant ammount of hard disk space.
 #So, this function recursively deletes all fastq files from a folder.
 function remove_fastq {
-	fastq=$(find . -name "*fastq" -type f); for i in $fastq; do ls -lh $i; done
+                fastq=$(find . -name "*fastq" -type f);
+			echo "These are the fastq files in this folder (including subdirectories)" 
+                        for i in $fastq; do ls -lh $i; done
+                                read -p "How do you want to delete these files?\n1-All at once; 2-One at a time; 3-No deleting today, thanks" answer
+                                        if $answer=="1"; then
+                                                for i in $fastq; do rm $i; done
+						echo "All fastq files deleted"
+                                        elif $answer=="2"; then
+                                                for i in $fastq; do rm -i $1; done
+                                        else
+						echo "No fastq files deleted"
+					fi
+			unset fastq
 }
