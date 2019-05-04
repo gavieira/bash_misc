@@ -70,19 +70,32 @@ function multifasta_seqlen_decrease {
 }
 
 #SRA files can be converted to fastq. Hence, when working with public data, keeping only the SRA files (generally smaller than fastq) can save up a significant ammount of hard disk space.
-#So, this function recursively deletes all fastq files from a folder.
+#So, this function recursively deletes all fastq files from a directory.
 function remove_fastq {
-                fastq=$(find . -name "*fastq" -type f);
-			echo "These are the fastq files in this folder (including subdirectories)" 
-                        for i in $fastq; do ls -lh $i; done
-                                read -p "How do you want to delete these files?\n1-All at once; 2-One at a time; 3-No deleting today, thanks" answer
-                                        if $answer=="1"; then
-                                                for i in $fastq; do rm $i; done
-						echo "All fastq files deleted"
-                                        elif $answer=="2"; then
-                                                for i in $fastq; do rm -i $1; done
-                                        else
-						echo "No fastq files deleted"
-					fi
-			unset fastq
+	fastq=$(find . -name "*fastq" -type f);
+	echo "These are the fastq files in this folder (including subdirectories)"$'\n' 
+	for i in $fastq; do ls -lh $i; done
+	read -p $'\n'"How do you want to delete these files? 1-All at once; 2-One at a time; 3-No deleting today, thanks. "  answer
+	if [ $answer == "1" ]; then
+		for i in $fastq; do rm $i; done
+		echo "All fastq files deleted"
+	elif [ $answer == "2" ]; then
+		for i in $fastq; do rm -i $i; done
+	else
+		echo "No fastq files deleted"
+	fi
+	unset fastq
+}
+
+#Get the size of a directory and its primary subdirectories (default)
+#Can get the size of directories in different depths, depending on the numerical argument given:
+#"directory_size 0" will give the size of the current directory
+#"directory_size 2" will give the size of the current directory, its primary subdirectories, and the directories inside these subdirectories.
+function directory_size {
+	local re='^[0-9]+$'
+	if [[ "$1" =~ $re ]]; then
+		du -h --max-depth=$1
+	else
+		du -h --max-depth=1
+	fi
 }
