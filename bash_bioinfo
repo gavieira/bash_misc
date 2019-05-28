@@ -87,15 +87,23 @@ function remove_fastq {
 	unset fastq
 }
 
-#Get the size of a directory and its primary subdirectories (default)
-#Can get the size of directories in different depths, depending on the numerical argument given:
-#"directory_size 0" will give the size of the current directory
-#"directory_size 2" will give the size of the current directory, its primary subdirectories, and the directories inside these subdirectories.
-function directory_size {
-	local re='^[0-9]+$'
-	if [[ "$1" =~ $re ]]; then
-		du -h --max-depth=$1
+
+function multifasta_seqcount {
+	if [ $# -eq 0 ]; then
+		echo -e "\nThis function calculates the number of sequences in multifasta file(s)\n
+Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n"
 	else
-		du -h --max-depth=1
+
+		local re='^>.*'
+	        for i in "$@"; do
+	       		local count=0
+	        	while read -r line; do
+		        	if [[ $line =~ $re ]]; then
+			        	((count++)) #Neat way to increment the value of a variable
+				fi
+	        	done < $i
+			printf "%s\t%s seqs\n" "$i" "$count" #Alternative to 'echo', said to be more supported between computers
+		done
 	fi
 }
+
