@@ -91,7 +91,7 @@ function remove_fastq {
 function multifasta_seqcount {
 	if [ $# -eq 0 ]; then
 		echo -e "\nThis function calculates the number of sequences in multifasta file(s)\n
-Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n"
+Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n" #'echo -e' allows for interpretation of backslashes escapes
 	else
 
 		local re='^>.*'
