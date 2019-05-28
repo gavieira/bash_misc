@@ -27,8 +27,31 @@ function remove_score_seqin {
 	fi
 }
 
-#Length of individual sequences in a multifasta file
+#Length of individual sequences in any number of multifasta files
 multifasta_seqlen() {
+	if [ $# -eq 0 ]; then
+		echo "usage: multifasta_seqlen file1.fasta file2.fasta ... fileN.fasta"
+	else	
+		for i in "$@"; do
+			printf "\n%s\n" "$i"
+			while read line; do
+				if [[ "${line[0]}" =~ ">" ]] ; then
+					echo -e $header"\t\t"$length
+					length=0
+					header=$line
+					continue
+				else
+					let length=$((length+${#line}))
+				fi
+			done < $i
+		done
+	fi
+	echo -e $header"\t\t"$length
+	unset header && unset length #Both 'unset' and 'local' cleans the variable from memory after running the function
+}
+
+#Length of individual sequences in a single multifasta file
+multifasta_seqlen_single() {
 	if [ $# -eq 0 ]; then
 		echo "usage: multifasta_seqlen sequences.fasta"
 	else	
@@ -52,7 +75,7 @@ function multifasta_seqlen_increase {
 	if [ $# -eq 0 ]; then
 		echo "usage: multifasta_seqlen_increase sequences.fasta"
 	else
-		local increase=$(multifasta_seqlen $1 | sort -k3 -t $'\t')
+		local increase=$(multifasta_seqlen_single $1 | sort -k3 -t $'\t')
 		echo "$increase"
 		#unset increase
 	fi
@@ -63,7 +86,7 @@ function multifasta_seqlen_decrease {
 	if [ $# -eq 0 ]; then
 		echo "usage: multifasta_seqlen_decrease sequences.fasta"
 	else
-		local decrease=$(multifasta_seqlen $1 | sort -r -k3 -t $'\t')
+		local decrease=$(multifasta_seqlen_single $1 | sort -r -k3 -t $'\t')
 		echo "$decrease"
 		#unset decrease
 	fi
@@ -95,13 +118,13 @@ Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n" #'echo -e'
 	else
 
 		local re='^>.*'
-	        for i in "$@"; do
+	        for i in "$@"; do ##Using a for loop to iterate over all arguments ("$@") makes the function more flexible
 	       		local count=0
 	        	while read -r line; do
 		        	if [[ $line =~ $re ]]; then
 			        	((count++)) #Neat way to increment the value of a variable
 				fi
-	        	done < $i
+	        	done < $i ##REMEMBER: Each argument must be used as input for the while loop
 			printf "%s\t%s seqs\n" "$i" "$count" #Alternative to 'echo', said to be more supported between computers
 		done
 	fi
