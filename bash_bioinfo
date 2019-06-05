@@ -130,3 +130,22 @@ Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n" #'echo -e'
 	fi
 }
 
+function fasta_gene_name_prepend {
+	if [ $# -eq 0 ]; then
+		echo -e "\nThis function adds the gene name (normally between parentheses in genbank records) to the start of the id line in a fasta file\n
+Usage: multifasta_seqcount file1.fasta file2.fasta ... fileN.fasta\n"
+	else
+		local re='^>.*\((.+)\).*'
+		for i in "$@"; do
+	        	while read -r line; do
+		        	if [[ $line =~ $re ]]; then
+					gene_name=$(echo $line | sed -r 's/^.*\((.+)\).*$/\1/')
+					newid=$(echo $line | sed  "s/^>/>$gene_name /g" )
+					echo $newid 				
+				else
+					echo $line #If the id line does not have parentheses, an unmodified id will be printed
+				fi
+	        	done < $i
+		done
+	fi
+}
