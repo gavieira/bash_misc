@@ -11,3 +11,9 @@ Or you could append the file to, for instance, your ~/.bashrc file (permanently 
 ```
 cat /home/gabriel/Dropbox/repos/bash_bioinfo/bash_bioinfo >> ~/.bashrc && source ~/.bashrc
 ```
+
+# backup.sh
+
+Script written by [Igor Costa](https://github.com/igorrcosta).
+This script uses rsync to backup all home folders to an directory in a server.
+It also uses the 'date' command to calculate the time elapsed in the process.
