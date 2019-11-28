@@ -1,7 +1,7 @@
 #Prints how long a comand took
 function timeit {
     START=$(date +%s) 
-    echo "$@"
+    "$@"
     FINISH=$(date +%s) 
     echo "total time: $(( ($FINISH-$START) / 60 )) minutes, $(( ($FINISH-$START) % 60 )) seconds"
     #echo "Backup from $(date '+%A, %d %B %Y, %T')"    
