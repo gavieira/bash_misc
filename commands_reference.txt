@@ -1,0 +1,4 @@
+# youtube-dl -- Download playlist (ordered and with autosubs):
+
+youtube-dl -o "%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
+
