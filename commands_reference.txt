@@ -1,4 +1,245 @@
-# youtube-dl -- Download playlist (ordered and with autosubs):
+--youtube-dl
+
+# Download playlist (ordered and with autosubs, ignoring errors):
 
 youtube-dl -o "%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
+
+
+--cut
+
+#Imprimir apenas algumas colunas do arquivo original:
+
+cut -f1,2,5,6 --complement PFERALIS_ARTEMIS.gff
+
+
+#Excluir coluna do arquivo original:
+
+cut -f4 --complement PFERALIS_ARTEMIS.gff
+
+
+--awk
+
+#Substituir texto em uma unica coluna:
+
+awk -F"\t" '{gsub("gene","CDS",$3); print}' OFS="\t"  PPERBOSCII_ARTEMIS.gff > NEW.gff
+
+Troca a string "gene" por "CDS" na coluna 3, usando tab ("\t") como separador.
+
+
+#Imprimir linhas em que uma coluna seja >= x:
+awk '$4>=2{print}' filename (Imprme linhas nas quais a coluna 4 tenha valor >= a 2)
+
+
+#pegar uma sequencia de um arquivo multifasta com base no ID:
+
+awk -vRS=">" 'BEGIN{t["ID da sequencia"]=1} {if($1 in t){printf ">%s",$0}}'  sequence.fasta
+
+Cria objeto t, e se esse objeto está na linha, ele o imprime até o próximo separador (>).
+
+
+
+--sed
+
+# Gerar arquivos com apenas as linhas de 1 a 125 do arquivo original:
+
+sed -n 1,125p input.file > output.file
+
+#Multiple line ranges:
+
+sed -n '2,4p;6,8p' file.txt
+
+#Substituir pattern sem abrir arquivo:
+
+sed -i -e 's/few/asd/g' hello.txt
+
+s/ substitui 'few' por 'asd' no arquivo hello.txt
+/g stands for "global" - substitui todos os 'few' na msma linha
+
+sed "s/'/\"/g"  Input_file -  troca single quote por double quote
+
+--ls
+
+#Listar apenas pastas:
+ls -ld */
+
+#listar apenas um arquivo por linha:
+ls -1
+
+#Listar continuamente (refresh 3 segundos)
+watch -n3 ls -ltrh
+
+watch - repete o comando.
+
+
+# Parar processo, colocar no background e adicionar nohup:
+Ctrl+Z (para o processo)
+bg (coloca no background - &)
+job (para ver o número do job)
+disown -h %[nº_do_job - coloca o nohup
+ex: disown -h %1
+
+
+--tar
+
+#Comprimir:
+
+tar -cjvf files.tar.bz2 stuff => comprime para .tar.bz2 (+ lento, mas mais compactado)
+
+
+ tar -czvf files.tar.gz /usr/local/something => comprime para .tar.gz (+rápido e menos compacto)
+
+-c : create - cria um arquivo (não deleta o anterior_
+-z: comprime com gzip
+-j: comprime bzip2
+-f: vc especifica o nome do arquivo de saida
+
+tar -czvf files.tar.gz /home/ubuntu --exclude=/home/ubuntu/Downloads --exclude=/home/ubuntu/.cache => Comprime tudo exceto (aceita wildcard)
+
+
+--tail
+
+#Ver arquivos de log em tempo real (20 linhas)
+
+tail -n 20 -f nome_do_arquivo.txt
+
+
+--uname
+
+#Checar qual versão do Linux (32 ou 64 bits) vc está usando:
+uname -a
+
+--paste
+
+#Merge files as different collumns:
+paste file1 file2 > 2collumns.txt
+
+--less
+
+#See line numbers:
+less -N file.txt
+
+--chsh
+
+#Change SHELL (from /bin/sh to /bin/bash, por exemplo)
+
+sudo chsh -s /bin/bash <username>
+
+(alternativamente, vc pode adicionar a linha "/bin/bash" no fim do arquivo  ~/.profile
+
+
+--scp
+
+#scp (mandar arquivo pra outra máquina, sem entrar nela)
+scp -P 2019  PGRACILIS_FILTERED_DENOVO_K37_out.ace gabriel@ip_remotehost:~
+scp -P 2019 -r PGRACILIS_FILTERED_DENOVO_K37 gabriel@ip_remotehost:~ (para diretório)
+
+
+#scp (pegar arquivo de outra máquina, sem entrar nela)
+scp -P 2019 gabriel@ip_remotehost:/path/to/file.txt /some/local/directory
+
+Copy multiple files from the remote host to your current directory on the local host
+scp your_username@remotehost.edu:~/\{foo.txt,bar.txt\} .
+
+
+--trimmomatic
+
+java -jar trimmomatic-0.35.jar PE -threads 12 -phred33 input_forward.fq.gz input_reverse.fq.gz -baseout basename.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+
+--grep
+
+# usando grep para identificar padrão no fim da string
+
+ls -R | grep '\.rar$'
+$ é o REGEX q indica o fim da string.
+
+
+Grep apenas para marcar matches no texto:
+grep -z filename.txt
+
+
+--lscpu
+
+#informações sobre cpu (incluindo número de processadores):
+lscpu
+
+
+
+--miraconvert
+
+miraconvert  -f <input_format> -t <output_format> Arquivo.informat Arquivo.outformat
+miraconvert  -f maf -t ace -r C -r f PGRACILIS_AGORAVAI_out.maf PGRACILIS_AGORAVAI_out.ace
+miraconvert -f maf -t fasta -r C -r f lniger-REFERENCE_out.maf lniger-ACGT
+
+
+--SRAtoolkit
+
+Baixar arquivo .sra (baixa para ~/ncbi/public/sra)
+path/to/prefetch <accession number>
+
+Converter sra em fastq (substituir split-spot por split-3 ou split-files para R1 e R2):
+nohup /bioinfo/sratoolkit.2.8.1-centos_linux64/bin/fastq-dump.2.8.1 --split-spot --clip --read-filter pass --skip-technical --readids --dumpbase SRR1742979.Pgracilis.sra &
+
+-X 10000 - Imprime os primeiros 10000 spots.
+
+--origfmt - O cabeçalho fica no formato Illumina
+
+CHANGE HEADER:
+
+fastq-dump --split-files --defline-seq '@$ac-$sn/$ri' --defline-qual '+' -O ./ ACCESSION
+
+
+
+
+--NOVOPlasty
+
+Chama o script e diz onde está o arquivo de configuração.
+nohup perl ~/bioinfo/NOVOPlasty-master/NOVOPlasty2.6.pl -c config.txt > NOVOPlasty.out 2> NOVOPlasty.err &
+
+config.txt :
+
+Insert_size: SRA run selector.
+Read Length: só dar um less no fast
+SEED: procurar gene mitocondrial da espécie ou gênero (usar filt "genetic compartiments" do genbank)
+
+
+
+
+--MITObim
+
+nohup /bioinfo/MITObim-master/MITObim_1.8.pl -end 40 --clean -sample pgracilis -ref REFERENCE -readpool ../SRR1742979.Pgracilis.fastq -maf PGRACILIS_AGORAVAI_d_results/PGRACILIS_AGORAVAI_out.maf > mitobim.out 2> mitobim.err &
+
+Interleaved fastq (para rodar paired end):
+/bioinfo/MITObim-master/misc_scripts/interleave-fastqgz-MITOBIM.py SRR5150667.Taethiops_1.fastq SRR5150667.Taethiops_2.fastq > SRR5150667.Taethiops_interleaved.fastq
+
+
+
+--fastqc
+
+nohup fastqc -o fastqc_out/ SRR5112522.Pevitus_2.fastq &
+
+
+--bowtie2
+
+#Bowtie2-build - cria database para o bowtie2
+
+bowtie2-build 13FORM.fasta 13FORM
+
+#Roda BOWTIE2
+nohup bowtie2 -x 13FORM -U SRR1743140.Pgracilis.fastq -S SRR1743140.Pgracilis.sam --no-unal --no-head --very-sensitive-local -p 32 &
+nohup bowtie2 -x PVENEFICUS -1 SRR5112539.Pmixtecus_1.fastq -2 SRR5112539.Pmixtecus_2.fastq -S SRR5112539.Pmixtecus.sam --no-unal --no-head --very-sensitive-local -p 8 &
+
+#Obtem a lista de ids das reads mapeadas
+cat SRR1743140.Pgracilis.sam | awk '{print $1}' | sort -u > readList.info
+
+
+
+--genechecker
+
+python /bioinfo/mitoMaker/geneChecker.py ../Srichteri.gb JWHX01003879.fasta JWHX01003879.gb
+
+
+--spades
+
+nohup /bioinfo/SPAdes-3.10.0-Linux/bin/spades.py -o PPALIDUS_SPADES_DENOVO_2MILLION -1 SRR1742947.Ppallidus.0bp_pass_1.fastq -2 SRR1742947.Ppallidus.0bp_pass_2.fastq --threads 24 --memory 20 -k 61,73,79,89,47,23 >spades.out >spades.err &
 
