@@ -2,7 +2,7 @@
 
 # Download playlist (ordered and with autosubs, ignoring errors):
 
-youtube-dl -o "%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
+youtube-dl -f best -o "%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
 
 
 --cut
