@@ -4,6 +4,20 @@
 
 youtube-dl -f best -o "%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
 
+--jupyter-lab (open remotely) - https://amber-md.github.io/pytraj/latest/tutorials/remote_jupyter_notebook
+
+In remote host, open the terminal, change directory to where you have your notebooks and type:
+
+jupyter notebook --no-browser --port=8889
+#Leave it open
+
+In local computer, type (port forwarding):
+
+ssh -N -f -L localhost:8888:localhost:8889 username@your_remote_host_name
+
+Now you can access the remote host's jupyter-lab at:
+
+localhost:8888
 
 --cut
 
