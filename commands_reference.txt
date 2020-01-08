@@ -86,14 +86,18 @@ ex: disown -h %1
 tar -cjvf files.tar.bz2 stuff => comprime para .tar.bz2 (+ lento, mas mais compactado)
 
 
- tar -czvf files.tar.gz /usr/local/something => comprime para .tar.gz (+rápido e menos compacto)
+tar -czvf files.tar.gz /usr/local/something => comprime para .tar.gz (+rápido e menos compacto)
+
+tar -cakvf files.tar.bz2 /usr/local => Identifica o programa para compressão a partir da extensão do arquivo (no caso, bz2). Mantém o arquivo original
 
 -c : create - cria um arquivo (não deleta o anterior_
 -z: comprime com gzip
 -j: comprime bzip2
+-a: identifica qual compressão usar baseado na extensão do arquivo
 -f: vc especifica o nome do arquivo de saida
+-k: mantém arquivo original
 
-tar -czvf files.tar.gz /home/ubuntu --exclude=/home/ubuntu/Downloads --exclude=/home/ubuntu/.cache => Comprime tudo exceto (aceita wildcard)
+tar -cavf files.tar.gz /home/ubuntu --exclude='/home/ubuntu/Downloads' --exclude='/home/ubuntu/.cache' => Comprime tudo exceto (aceita wildcard)
 
 
 --tail
