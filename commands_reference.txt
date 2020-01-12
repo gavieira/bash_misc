@@ -19,6 +19,13 @@ Now you can access the remote host's jupyter-lab at:
 
 localhost:8888
 
+-- mitos
+
+runmitos.py -i <fasta_file> -c <genetic_code> -o <output_dir> -r <reference_dir>
+
+Obs: Reference dir can be found at https://zenodo.org/record/2672835#.XhsxXJnQ_iw
+
+
 --cut
 
 #Imprimir apenas algumas colunas do arquivo original:
