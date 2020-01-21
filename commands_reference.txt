@@ -2,9 +2,7 @@
 
 # Add Bioconda to software channels
 
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
+conda config --add channels defaults && conda config --add channels bioconda && conda config --add channels conda-forge
 
 
 --youtube-dl
