@@ -26,6 +26,12 @@ Now you can access the remote host's jupyter-lab at:
 
 localhost:8888
 
+-- symbolic links (symlinks)
+
+#To create, use:
+
+ln -s {source-filename} {symbolic-filename}
+
 -- docker
 
 #Run container with $PWD as volume:
