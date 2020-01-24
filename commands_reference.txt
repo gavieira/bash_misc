@@ -52,7 +52,7 @@ for i in /path/to/dir/*.gb; do echo $i; done    #Will return all files from a gi
 
 #When files are spread throughout several folders, using the find command may be a good idea, But you will have to change the IFS (Internal Field Separator) to parse its output
 
-IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done  #Find all files with .fa extension and can perform operations on them
+IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done && unset IFS  #Find all files with .fa extension and can perform operations on them
 
 
 --cut
