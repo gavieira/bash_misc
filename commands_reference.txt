@@ -42,6 +42,10 @@ docker run --name teste conda/miniconda3 /bin/bash
 
 docker start -i teste
 
+#Remove containers:
+
+docker container rm container1 container2
+
 #Run container with $PWD as volume:
 
 docker run -d -v $PWD:/mnt -w /mnt  container_name command_line
