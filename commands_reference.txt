@@ -34,6 +34,14 @@ ln -s {source-filename} {symbolic-filename}
 
 -- docker
 
+#Create container from image:
+
+docker run --name teste conda/miniconda3 /bin/bash
+
+#Run container in interactive shell:
+
+docker start -i teste
+
 #Run container with $PWD as volume:
 
 docker run -d -v $PWD:/mnt -w /mnt  container_name command_line
