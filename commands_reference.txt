@@ -46,9 +46,25 @@ docker start -i teste
 
 docker container rm container1 container2
 
+#Remove images:
+
+docker image rm image1 image2
+
 #Run container with $PWD as volume:
 
 docker run -d -v $PWD:/mnt -w /mnt  container_name command_line
+
+#Stop/remove all of Docker containers:
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+or:
+
+docker rm -f $(docker ps -a -q) #Both stops/removes
+
+#Useful link: https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+
 
 -- mitos
 
