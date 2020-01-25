@@ -65,6 +65,17 @@ docker rm -f $(docker ps -a -q) #Both stops/removes
 
 #Useful link: https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
 
+##Remove all images:
+
+docker rmi $(docker images -a -q)
+
+##Remove dangling (not associated with container) images, volumes, etc:
+
+docker system prune
+
+##Remove everything:
+
+docker system prune -a
 
 -- mitos
 
