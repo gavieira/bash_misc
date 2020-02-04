@@ -94,6 +94,12 @@ for i in /path/to/dir/*.gb; do echo $i; done    #Will return all files from a gi
 IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done && unset IFS  #Find all files with .fa extension and can perform operations on them
 
 
+-- rm
+
+#Remove everything except certain files
+
+rm !(file1.txt|file2.zip|file3.jpg)
+
 --cut
 
 Mandatory arguments to long options are mandatory for short options too.
