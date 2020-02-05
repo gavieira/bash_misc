@@ -168,6 +168,16 @@ awk -vRS=">" 'BEGIN{t["ID da sequencia"]=1} {if($1 in t){printf ">%s",$0}}'  seq
 Cria objeto t, e se esse objeto está na linha, ele o imprime até o próximo separador (>).
 
 
+#Get system usernames:
+
+awk -F: '{print $1}' /etc/passwd
+
+
+#Get groups and associated users:
+
+awk -F: '{print $1, "-", $NF}' /etc/group
+
+NF corresponds to "Number of Fields". Thus, this oneliner gets the first and last fields.
 
 --sed
 
