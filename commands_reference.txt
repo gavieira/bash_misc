@@ -271,6 +271,15 @@ sudo chsh -s /bin/bash <username>
 
 (alternativamente, vc pode adicionar a linha "/bin/bash" no fim do arquivo  ~/.profile
 
+--chmod
+
+chmod [ugoa][+-=][rwxXst] filename
+
+
+#For directories, use -R (ex: grant execute to all):
+
+chmod -R +x dir
+
 
 --scp
 
