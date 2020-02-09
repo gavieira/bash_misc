@@ -317,7 +317,10 @@ grep -z filename.txt
 #informações sobre cpu (incluindo número de processadores):
 lscpu
 
+--lsb-realease
 
+#Checar qual versão de Linux OS está instalada:
+lsb_release -a
 
 --miraconvert
 
