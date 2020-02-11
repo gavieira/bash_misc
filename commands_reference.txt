@@ -95,8 +95,7 @@ IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done &&
 
 #You can also get the absolute path to directories, go inside them, and remove all files except by those with some specific extension:
 
-for i in ls -d $PWD/*/; do cd $i && rm -r !(*extension); done
-
+for i in $PWD/*/; do cd $i && rm -rf !(*extension); done
 
 -- rm
 
