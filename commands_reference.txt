@@ -420,3 +420,10 @@ python /bioinfo/mitoMaker/geneChecker.py ../Srichteri.gb JWHX01003879.fasta JWHX
 
 nohup /bioinfo/SPAdes-3.10.0-Linux/bin/spades.py -o PPALIDUS_SPADES_DENOVO_2MILLION -1 SRR1742947.Ppallidus.0bp_pass_1.fastq -2 SRR1742947.Ppallidus.0bp_pass_2.fastq --threads 24 --memory 20 -k 61,73,79,89,47,23 >spades.out >spades.err &
 
+--blast
+
+#Creating bastable database:
+makeblastdb -in database_file.fa -dbtype prot/nucl -out DATABASE_NAME
+
+#Running blast(p) - tabular:
+blastp -db DATABASE_NAME -evalue 1e-4 -query query_sequences.fa -out blast_results -outfmt 6
