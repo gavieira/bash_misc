@@ -112,6 +112,14 @@ shopt -s extglob
 
 rm !(file1.txt|file2.zip|file3.jpg)
 
+#Finally, remove the extglob shell:
+
+shopt -u extglob
+
+#Alternatively:
+
+shopt -s extglob && rm !(file1.txt|file2.zip|file3.jpg) && shopt -u extglob
+
 --cut
 
 Mandatory arguments to long options are mandatory for short options too.
