@@ -102,7 +102,7 @@ for i in $PWD/*/; do echo "This is the folder" $i; done
 for i in $PWD/*/; do cd $i && rm -rf !(*extension); done
 
 -- find
-#Obs - Tilde Expansion: Gets absolute path of the current working directory
+#Obs: In bash - Tilde Expansion: Gets absolute path of the current working directory
 
 echo ~+
 
@@ -111,6 +111,9 @@ echo ~+
 
 find ~+ -name filename
 
+#Or, alternatively (bash not needed):
+
+find "$(pwd -P)" -name "filename"
 
 -- rm
 
