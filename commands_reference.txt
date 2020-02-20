@@ -121,10 +121,12 @@ find "$(pwd -P)" -name "filename"
 #With $(comand) notation
 
 echo $(ls)
+total_seqs=$(grep -c ">" Trinity.120.fasta)
 
 #With backticks `command`
 
 echo `ls`
+total_seqs=`grep -c ">" Trinity.120.fasta`
 
 -- rm
 
