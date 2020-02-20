@@ -115,6 +115,17 @@ find ~+ -name filename
 
 find "$(pwd -P)" -name "filename"
 
+
+-- Command Substitution: Storing the output of a command in a variable. There are two ways to do this:
+
+#With $(comand) notation
+
+echo $(ls)
+
+#With backticks `command`
+
+echo `ls`
+
 -- rm
 
 #Remove everything except certain files/patterns ( more on Extended Pattern Matching Operators at https://www.linuxjournal.com/content/pattern-matching-bash and specifically about using them with rm at https://www.tecmint.com/delete-all-files-in-directory-except-one-few-file-extensions/ )
