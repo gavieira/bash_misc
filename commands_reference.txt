@@ -454,3 +454,7 @@ makeblastdb -in database_file.fa -dbtype prot/nucl -out DATABASE_NAME
 
 #Running blast(p) - tabular:
 blastp -db DATABASE_NAME -evalue 1e-4 -query query_sequences.fa -out blast_results -outfmt 6
+
+-- Download Dropbox zip files:
+
+#Need to be extracted using 7za 
