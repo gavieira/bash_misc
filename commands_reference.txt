@@ -459,6 +459,15 @@ makeblastdb -in database_file.fa -dbtype prot/nucl -out DATABASE_NAME
 #Running blast(p) - tabular:
 blastp -db DATABASE_NAME -evalue 1e-4 -query query_sequences.fa -out blast_results -outfmt 6
 
+
+--kraken2
+
+#Running kraken2 with fastq files:
+kraken2 --use-names --threads 4 --db ../16S_RDP_20190418/ --fastq-input --report report_kraken2 --paired FK_T7_S132_L001_R1_001.fastq FK_T7_S132_L001_R2_001.fastq
+
+Database files can be downloaded [here](https://ccb.jhu.edu/software/kraken2/index.shtml?t=downloads)
+
+
 -- Download Dropbox zip files:
 
 #Need to be extracted using 7za 
