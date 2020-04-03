@@ -46,7 +46,7 @@ my $PFAM2GO_DAT_URL = "ftp://ftp.geneontology.org/pub/go/external2go/pfam2go";
 ```
 
 
-* **conf:** Path to [configuration file](https://github.com/Trinotate/Trinotate/blob/master/auto/conf.txt). This is the file you will need to change in order to get your custom databases working in Trinotate
+* **conf:** Path to [configuration file](https://github.com/Trinotate/Trinotate/blob/master/auto/conf.txt). This is where you will add the path to the programs and databases used by Trinotate. This is also the file that needs to be modified in order to [get your custom databases working in autoTrinotate](#running-autotrinotate-with-a-custom-swissprot-database)
 
 ```
 [GLOBALS]
@@ -84,13 +84,13 @@ If you need Trinotate's BlastX adn BlastP analyses to be run against a custom Sw
 3. This will generate the file "custom_data_sprot.txt.pep", used to create a blast database with makeblastdb:
 
 ```
-makeblastdb -in custom_data_sprot.txt.pep -dbtype prot -out database_name
+makeblastdb -in custom_data_sprot.txt.pep -dbtype prot -out custom_data_sprot.txt.pep
 ```
 
-4. Finally, update the 
+4. Finally, update the ['conf.txt' file](https://github.com/Trinotate/Trinotate/blob/master/auto/conf.txt), adding the path to your custom SwissProt database.
 
-
-
-
-
+```
+# dbs
+SWISSPROT_PEP=/path/to/custom_data_sprot.txt.pep
+```
 
