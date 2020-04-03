@@ -48,6 +48,11 @@ Options controlling output:
   --textw <n>      : set max width of ASCII text output lines  [120]  (n>=120)
 
 
+--rsync
+
+Get file(s) from server (custom port):
+
+rsync -avzh -e 'ssh -p custom_port' user@ip:/path/to/remote/files /path/to/save/in/local
 
 
 --conda
