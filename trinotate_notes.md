@@ -101,7 +101,7 @@ You can use Trinotate's report (in .xls format) to generate several figures that
 1. Use the script [trinotate_report_summary.pl](https://github.com/Trinotate/Trinotate/blob/master/util/report_summary/trinotate_report_summary.pl)
 
 ```
-	usage: /home/gabriel/anaconda3/envs/transcriptomics/Trinotate-master/util/report_summary/trinotate_report_summary.pl Trinotate_report.xls output_prefix
+usage: /path/to/Trinotate-home/util/report_summary/trinotate_report_summary.pl Trinotate_report.xls output_prefix
 
 ```
 
