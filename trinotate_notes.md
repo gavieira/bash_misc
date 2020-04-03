@@ -96,8 +96,36 @@ SWISSPROT_PEP=/path/to/custom_data_sprot.txt.pep
 
 ## Generating a summary of Trinotate results
 
+You can use Trinotate's report (in .xls format) to generate several figures that summarize your results. In order to do that, you will need to: 
+
+1. Use the script [trinotate_report_summary.pl](https://github.com/Trinotate/Trinotate/blob/master/util/report_summary/trinotate_report_summary.pl)
+
+```
+	usage: /home/gabriel/anaconda3/envs/transcriptomics/Trinotate-master/util/report_summary/trinotate_report_summary.pl Trinotate_report.xls output_prefix
+
+```
+
+2. The summaries are based on the canvasxpress javascript library. However, the html has broken links to this library's javascript and css files (which can be found [here](https://cdnjs.com/libraries/canvasXpress)). So, you have to open the html file generated in the previous step as text and replace the url's in the following setion from this:
+
+```
+<body onload="load_plots();">
+ <link rel="stylesheet" href="http://canvasxpress.org/css/canvasXpress.css" type="text/css"/>
+<!--[if IE]><script type="text/javascript" src="canvasXpress-SF/js/excanvas.js"></script><![endif]-->
+<script type="text/javascript" src=**"http://canvasxpress.org/js/canvasXpress.min.js"**></script>
+```
+
+To this:
+
+```
+<body onload="load_plots();">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/canvasXpress/24.8.1/canvasXpress.min.js" type="text/css"/>
+<!--[if IE]><script type="text/javascript" src="canvasXpress-SF/js/excanvas.js"></script><![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/canvasXpress/24.8.1/canvasXpress.min.js"></script>
+```
+
+3. **All done!** Now, you can open, visualize and manipulate your Trinotate summary graphs.
 
 
-## Rnammer
+## OBS: Rnammer
 
-Probably the most inglorious task when setting Trinotate up is to install Rnammer. You can find some help at [Trinotate's wiki](https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required#rnammer-free-academic-download) and [here](https://github.com/gavieira/rnammer_trinotate).
+Probably the most inglorious task when setting Trinotate up is to install Rnammer. You can find some help at [Trinotate's wiki](https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required#rnammer-free-academic-download).
