@@ -1,3 +1,51 @@
+--hmmer
+
+Getting PFAM HMM profile database:
+
+ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+
+
+Creating profile from alignment (hmmbuild):
+
+Usage: hmmbuild [-options] <hmmfile output> <alignment file>
+
+hmmbuild custom_data.hmm custom_data.aln
+
+Obs: "Normally the ID line is optional in Stockholm format, but hmmbuild has to name your new profile(s) somehow. For a single alignment, it will use your filename, or you can use the hmmbuild -n <name> option to provide a name yourself. For an alignment database, the only way hmmbuild can get a name for each alignment is from alignment annotation. Of alignment file formats, only Stockholm format provides a way to concatenate many alignments in the same file, with a name for each alignment." (HMMER manual)
+
+Make multiple sequence alignment using a profile (hmmalign):
+
+Usage: hmmalign [-options] <hmm file> <sequence file> (Aligns all seqs to the profile
+
+hmmalign globins4.hmm globins45.fa
+
+Search profile against sequence database (hmmsearch):
+
+Usage: hmmsearch [-options] <hmmfile> <sequence file or database>
+
+hmmsearch globins4.hmm uniprot_sprot.fasta > globins4.out
+
+Prepare profile database for hmmscan (hmmpress):
+
+Usage: hmmpress [-options] <hmmfile>
+
+Search sequence against profile database (hmmscan):
+
+hmmscan [-options] <hmmdb> <seqfile>
+
+Options controlling output:
+  -o <f>           : direct output to file <f>, not stdout
+  --tblout <f>     : save parseable table of per-sequence hits to file <f>
+  --domtblout <f>  : save parseable table of per-domain hits to file <f>
+  --pfamtblout <f> : save table of hits and domains to file, in Pfam format <f>
+  --acc            : prefer accessions over names in output
+  --noali          : don't output alignments, so output is smaller
+  --notextw        : unlimit ASCII text output line width
+  --textw <n>      : set max width of ASCII text output lines  [120]  (n>=120)
+
+
+
+
 --conda
 
 # Add Bioconda to software channels
