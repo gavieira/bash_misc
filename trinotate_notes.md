@@ -94,3 +94,10 @@ makeblastdb -in custom_data_sprot.txt.pep -dbtype prot -out custom_data_sprot.tx
 SWISSPROT_PEP=/path/to/custom_data_sprot.txt.pep
 ```
 
+## Generating a summary of Trinotate results
+
+
+
+## Rnammer
+
+Probably the most inglorious task when setting Trinotate up is to install Rnammer. You can find some help at [Trinotate's wiki](https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required#rnammer-free-academic-download) and [here](https://github.com/gavieira/rnammer_trinotate).
