@@ -129,3 +129,7 @@ To this:
 ## OBS: Rnammer
 
 Probably the most inglorious task when setting Trinotate up is to install Rnammer. You can find some help at [Trinotate's wiki](https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required#rnammer-free-academic-download).
+
+## OBS: SQLite boilerplate
+
+You will need to create an SQLite database that will later be populated with trinotate results. To create this, use the [Build_Trinotate_Boilerplate_SQLite_db.pl](https://github.com/Trinotate/Trinotate/blob/master/admin/Build_Trinotate_Boilerplate_SQLite_db.pl) script in Trinotate's 'admin' directory
