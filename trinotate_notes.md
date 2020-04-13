@@ -180,6 +180,6 @@ Trinotate Trinotate.sqlite report --incl_pep --incl_trans > trinotate_annotation
 
 ## Trinotate_annotation_report.xls
 
-It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end with a great number of taxonomy-related columns.
+It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end with a great number of taxonomy-related columns that will screw up the report's layout.
 
 More on Trinotate report columns [here](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report)
