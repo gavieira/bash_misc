@@ -169,3 +169,8 @@ transcript	0
 ## Loading custom results in Trinotate SQLite Database
 
 You can also load results with custom cutoffs manually into the SQLite database, instead of relying on autoTrinotate defaults. Refer to [this page](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report) for more info.
+
+**OBS**: Adding protein and transcript sequence to the report:
+``
+Trinotate Trinotate.sqlite report --incl_pep --incl_trans > trinotate_annotation_report.xls
+```
