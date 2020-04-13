@@ -170,7 +170,16 @@ transcript	0
 
 You can also load results with custom cutoffs manually into the SQLite database, instead of relying on autoTrinotate defaults. Refer to [this page](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report) for more info.
 
-**OBS**: Adding protein and transcript sequence to the report:
-``
+**OBS1**: With this, you can [add custom database blast hits](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#optional-load-custom-database-blast-hits) without the need of running trinotate again.
+
+**OBS2**: Adding protein and transcript sequence to the report:
+
+```
 Trinotate Trinotate.sqlite report --incl_pep --incl_trans > trinotate_annotation_report.xls
 ```
+
+## Trinotate_annotation_report.xls
+
+It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end with a great number of taxonomy-related columns.
+
+More on Trinotate report columns [here](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report)
