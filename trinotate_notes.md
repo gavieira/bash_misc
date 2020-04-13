@@ -118,7 +118,7 @@ To this:
 
 ```
 <body onload="load_plots();">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/canvasXpress/24.8.1/canvasXpress.min.js" type="text/css"/>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/canvasXpress/24.8.1/canvasXpress.css" type="text/css"/>
 <!--[if IE]><script type="text/javascript" src="canvasXpress-SF/js/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/canvasXpress/24.8.1/canvasXpress.min.js"></script>
 ```
