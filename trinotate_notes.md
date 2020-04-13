@@ -172,12 +172,15 @@ transcript	0
 
 You can also load results with custom cutoffs manually into the SQLite database, instead of relying on autoTrinotate defaults. Refer to [this page](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report) for more info.
 
-**OBS1**: With this, you can [add custom database blast hits](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#optional-load-custom-database-blast-hits) without the need of running trinotate again.
+**OBS1**: With this, you can [add custom database blast hits](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#optional-load-custom-database-blast-hits) (both from blastx and blastp) without the need of running trinotate again.
 
-```
-LOAD_custom_blast --outfmt6 <file> --prog <blastp|blastx> --dbtype <database_name>
+**Loading custom database blast hits:**
 
-```
+| Command | Description |
+| --- | --- |
+|  `Trinotate Trinotate.sqlite LOAD_custom_blast --outfmt6 custom_db.blastp.outfmt6 --prog blastp --dbtype custom_db_name` | Load protein hits |
+|  `Trinotate Trinotate.sqlite LOAD_custom_blast --outfmt6 custom_db.blastx.outfmt6 --prog blastx --dbtype custom_db_name` | Load transcript hits |
+
 
 Then, you can [output a new report](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report) based on this SQL database using:
 
