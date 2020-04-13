@@ -94,6 +94,8 @@ makeblastdb -in custom_data_sprot.txt.pep -dbtype prot -out custom_data_sprot.tx
 SWISSPROT_PEP=/path/to/custom_data_sprot.txt.pep
 ```
 
+This is particularly useful when you need to generate figures based on blastx and blasp hits against a custom swissprot library (specific toxin data, for instance). However, normally you will want to search the entire swissprot database and also add blast hits against custom dbs. In this case, you can [load the custom data](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#optional-load-custom-database-blast-hits) into the SQL database and them [generate a new trinotate report](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report). This article has a [session about this](#loading-custom-results-in-trinotate-sqlite-database).
+
 ## Generating a summary of Trinotate results
 
 You can use Trinotate's report (in .xls format) to generate several figures that summarize your results. In order to do that, you will need to: 
@@ -172,7 +174,37 @@ You can also load results with custom cutoffs manually into the SQLite database,
 
 **OBS1**: With this, you can [add custom database blast hits](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#optional-load-custom-database-blast-hits) without the need of running trinotate again.
 
-**OBS2**: Adding protein and transcript sequence to the report:
+```
+LOAD_custom_blast --outfmt6 <file> --prog <blastp|blastx> --dbtype <database_name>
+
+```
+
+Then, you can [output a new report](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report) based on this SQL database using:
+
+```
+Trinotate Trinotate.sqlite report [options] > trinotate_annotation_report.xls
+```
+
+And you can threshold the blast and pfam results to be reported by including the options below:
+
+```
+##################################################################
+#
+#  -E <float>                 maximum E-value for reporting best blast hit
+#                             and associated annotations.
+#							  Example: 1e-3
+#  --pfam_cutoff <string>     'DNC' : domain noise cutoff (default)
+#                             'DGC' : domain gathering cutoff
+#                             'DTC' : domain trusted cutoff
+#                             'SNC' : sequence noise cutoff
+#                             'SGC' : sequence gathering cutoff
+#                             'STC' : sequence trusted cutoff
+#
+##################################################################
+```
+ 
+
+**OBS2**: Generating a report with protein and transcript sequences:
 
 ```
 Trinotate Trinotate.sqlite report --incl_pep --incl_trans > trinotate_annotation_report.xls
@@ -180,6 +212,27 @@ Trinotate Trinotate.sqlite report --incl_pep --incl_trans > trinotate_annotation
 
 ## Trinotate_annotation_report.xls
 
-It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end with a great number of taxonomy-related columns that will screw up the report's layout.
+It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end up with a great number of taxonomy-related columns that will screw up the report's layout:
+
+```
+0       #gene_id
+1       transcript_id
+2       sprot_Top_BLASTX_hit
+3       RNAMMER
+4       prot_id
+5       prot_coords
+6       sprot_Top_BLASTP_hit
+7       custom_pombe_pep_BLASTX
+8       custom_pombe_pep_BLASTP
+9       Pfam
+10      SignalP
+11      TmHMM
+12      eggnog
+13      Kegg
+14      gene_ontology_blast
+15      gene_ontology_pfam
+16      transcript
+17      peptide
+```
 
 More on Trinotate report columns [here](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report)
