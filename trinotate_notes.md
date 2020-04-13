@@ -133,3 +133,36 @@ Probably the most inglorious task when setting Trinotate up is to install Rnamme
 ## OBS: SQLite boilerplate
 
 You will need to create an SQLite database that will later be populated with trinotate results. To create this, use the [Build_Trinotate_Boilerplate_SQLite_db.pl](https://github.com/Trinotate/Trinotate/blob/master/admin/Build_Trinotate_Boilerplate_SQLite_db.pl) script in Trinotate's 'admin' directory
+
+## Count Trinotate report Fields
+
+For a summary of the annotated fields, you can use the [count_table_field.pl](https://github.com/Trinotate/Trinotate/blob/master/util/count_table_fields.pl) script in the 'util' directory.
+
+Usage:
+
+```
+perl /path/to/Trinotate/util/count_table_fields.pl Trinotate_report.xls
+```
+
+Which will output this:
+
+```
+transcript_id	83885
+#gene_id	83885
+prot_coords	32460
+prot_id	32460
+Pfam	21111
+gene_ontology_Pfam	13152
+TmHMM	5827
+SignalP	2451
+sprot_Top_BLASTX_hit	1388
+gene_ontology_BLASTX	1388
+gene_ontology_BLASTP	998
+sprot_Top_BLASTP_hit	998
+Kegg	43
+eggnog	39
+RNAMMER	13
+peptide	0
+transcript	0
+```
+
