@@ -239,3 +239,7 @@ It **HAS** to be opened with **tab as delimiter**. Otherwise, you will end up wi
 ```
 
 More on Trinotate report columns [here](https://github.com/Trinotate/Trinotate.github.io/wiki/Loading-generated-results-into-a-Trinotate-SQLite-Database-and-Looking-the-Output-Annotation-Report#trinotate-output-an-annotation-report)
+
+## Running autotrinotate programs with custom parameters:
+
+You can customize the parameters of any program in autoTrinotate by changing the [conf.txt](https://github.com/Trinotate/Trinotate/blob/master/auto/conf.txt) file. 
