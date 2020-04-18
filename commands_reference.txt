@@ -1,3 +1,9 @@
+--killall
+
+Kill all processes with a given name (e.g. rstudio)
+
+killall rstudio
+
 --hmmer
 
 Getting PFAM HMM profile database:
