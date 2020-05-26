@@ -1,6 +1,6 @@
 --lsof
 
-list open files for a given path
+list open files for a given path, as well as associated PIDs
 
 lsof /home/user/
 
