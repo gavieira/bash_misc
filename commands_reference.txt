@@ -1,4 +1,4 @@
--- bash globbing tutorial:
+-- bash globbing (pattern matching) tutorial:
 
 https://linuxhint.com/bash_globbing_tutorial/
 
