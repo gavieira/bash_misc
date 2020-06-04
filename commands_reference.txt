@@ -193,7 +193,7 @@ IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done &&
 
 #Doing the same with directories:
 
-IFS=$'\n'; for i in $(find . -type d -name "mitos_results" -print); do echo "This is the file" $i; done && unset IFS  #Find all "mitos_results" directories  and perform operations on them
+IFS=$'\n'; for i in $(find . -type d -name "mitos_results" -print); do echo "This is the directory" $i; done && unset IFS  #Find all "mitos_results" directories  and perform operations on them
 
 
 #You can also get the absolute path to directories, go inside them, and do whatever you want there: 
