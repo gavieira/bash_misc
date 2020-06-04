@@ -190,6 +190,12 @@ for i in /path/to/dir/*.gb; do echo $i; done    #Will return all files from a gi
 
 IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done && unset IFS  #Find all files with .fa extension and can perform operations on them
 
+
+#Doing the same with directories:
+
+IFS=$'\n'; for i in $(find . -type d -name "mitos_results" -print); do echo "This is the file" $i; done && unset IFS  #Find all "mitos_results" directories  and perform operations on them
+
+
 #You can also get the absolute path to directories, go inside them, and do whatever you want there: 
 
 for i in $PWD/*/; do echo "This is the folder" $i; done
@@ -212,6 +218,9 @@ find ~+ -name filename
 
 find "$(pwd -P)" -name "filename"
 
+#Recursively get path to directory
+
+find YOUR_STARTING_DIRECTORY -type d -name "*99966*" -print
 
 -- Command Substitution: Storing the output of a command in a variable. There are two ways to do this:
 
