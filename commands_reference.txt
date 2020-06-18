@@ -1,3 +1,11 @@
+--git
+
+#restore all files to previous commit
+git reset --hard
+
+#restore a single file to previous commit
+git checkout -- path/to/foo
+
 -- bash globbing (filename expansion/pattern matching) tutorial:
 
 https://linuxhint.com/bash_globbing_tutorial/
