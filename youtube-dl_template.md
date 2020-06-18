@@ -22,4 +22,14 @@ $ youtube-dl -o "C:/MyVideos/%(series)s/%(season_number)s - %(season)s/%(episode
 # Stream the video being downloaded to stdout
 $ youtube-dl -o - BaW_jenozKc
 
+# Download all mp3 playlists of YouTube channel/user keeping each playlist in separate directory:
+
+youtube-dl -i -x --add-metadata --embed-thumbnail --audio-format mp3 -o '%(uploader)s/%(playlist)s/%(title)s.%(ext)s' https://www.youtube.com/channel/UC-zQnWIPHqhJm4NdjQmPy5g/playlists
+
+# Download single playlist in a new directory (ordered and with autosubs, ignoring errors):
+
+youtube-dl -f best -o "%(playlist)s/%(autonumber)s-%(title)s.%(ext)s" -i --write-auto-sub <playlist url>
+
+
+
 ```
