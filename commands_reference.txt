@@ -1,3 +1,22 @@
+-- linux bang commands
+
+!!    # Repeat last command
+!:0   # Returns command used
+!^    # Reapeats first argument from previous command
+!$    # Repeats the last argument from previous command
+!:2   # Repeats second argument from previous command
+!:10-12  # Repeats from 10th to 12th arguments
+!n    # Return command number n from history
+!pattern  # Most recent command matching pattern
+!!:s/find/replace   # last command, substitute find with replace
+
+Much more can be done with these. Look these links for more: 
+
+https://www.redhat.com/sysadmin/bash-bang-commands#:~:text=Under%20the%20hood%2C%20bang%20(!),in%20your%20previous%20commands%20quickly.
+
+https://stackoverflow.com/questions/3371294/how-can-i-recall-the-argument-of-the-previous-bash-command
+
+
 --git
 
 #restore all files to previous commit
