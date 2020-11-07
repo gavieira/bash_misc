@@ -608,3 +608,7 @@ Database files can be downloaded [here](https://ccb.jhu.edu/software/kraken2/ind
 -- Download Dropbox zip files:
 
 #Need to be extracted using 7za 
+
+-- subliminal
+
+subliminal --opensubtitles USER PASSWD --legendastv USER PASSWD --addic7ed USER PASSWD --omdb API_KEY download -l eng -l pt -l pt-br */*.mp4
