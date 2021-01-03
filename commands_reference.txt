@@ -229,6 +229,17 @@ IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done &&
 
 IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file without extension" ${i%.*}; done && unset IFS
 
+# Converting pptx to pdf recursively and saving export in the same dir as orginal
+
+IFS=$'\n'; for i in $(find . -name "*.pptx"); do libreoffice --headless --invisible --convert-to pdf --outdir $(dirname $i) $i; done && unset IFS
+
+# Same as above, but all will be written to te same dir
+
+IFS=$'\n'; for i in $(find . -name "*.pptx"); do libreoffice --headless --invisible --convert-to pdf --outdir CUSTOM_DIR $i; done && unset IFS
+
+Converting files ending with doc or docx:
+
+IFS=$'\n'; for i in $(find . -iregex "^.*docx?$"); do libreoffice --headless --invisible --convert-to pdf --outdir $(dirname $i) $i; done && unset IFS
 
 #Doing the same with directories:
 
