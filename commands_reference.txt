@@ -225,6 +225,10 @@ for i in /path/to/dir/*.gb; do echo $i; done    #Will return all files from a gi
 
 IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file" $i; done && unset IFS  #Find all files with .fa extension and can perform operations on them
 
+#Getting variable without extension:
+
+IFS=$'\n'; for i in $(find . -name *.fa); do echo "This is the file without extension" ${i%.*}; done && unset IFS
+
 
 #Doing the same with directories:
 
