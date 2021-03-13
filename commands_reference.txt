@@ -105,6 +105,9 @@ Get file(s) from server (custom port):
 
 rsync -avzh -e 'ssh -p custom_port' user@ip:/path/to/remote/files /path/to/save/in/local
 
+Copy file(s) with progress (same machine):
+
+rsync -ah --progress source-file destination-file
 
 --conda
 
