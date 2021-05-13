@@ -1,3 +1,20 @@
+-- Messing with mime
+
+# Getting applications available for a given mimetype
+gio mime inode/directory
+
+# Changing default application for a given mimetype
+gio mime inode/directory org.gnome.Nautilus.desktop
+
+#Get mimetype for a given file
+xdg-mime query filetype file.ext
+
+# Getting default application for a mimetype
+xdg-mime query default application/pdf
+
+# Changing default application for a given mimetype
+xdg-mime default mupdf.desktop application/pdf
+
 -- Brace expansion
 
 Used to select multiple files in a single dir, for example
