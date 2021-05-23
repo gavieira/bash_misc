@@ -1,3 +1,15 @@
+-- Mounting without sudo (udisksctl)
+
+#listing devices
+lsblk
+
+#mounting device
+udisksctl mount -b /dev/sdX
+
+#unmounting device
+udisksctl unmount -b /dev/sdb1
+
+
 -- wget to get entire directory (https://stackoverflow.com/questions/273743/using-wget-to-recursively-fetch-a-directory-with-arbitrary-files-in-it#)
 
 wget --recursive ${comment# self-explanatory} \
@@ -11,6 +23,9 @@ wget --recursive ${comment# self-explanatory} \
   --cut-dirs=0 ${comment# replace 0 with the number of folders in the path, 0 for the whole domain} \
 $URL
 
+-- Downloading without directories
+
+wget --recursive --no-directories --execute robots=off --no-parent $URL
 
 -- Messing with mime
 
