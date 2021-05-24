@@ -23,9 +23,9 @@ wget --recursive ${comment# self-explanatory} \
   --cut-dirs=0 ${comment# replace 0 with the number of folders in the path, 0 for the whole domain} \
 $URL
 
--- Downloading without directories
+-- Downloading without host directories in a specific path (that will be created if it doesn't
 
-wget --recursive --no-directories --execute robots=off --no-parent $URL
+wget --recursive --no-directories --execute robots=off --no-parent --directory-prefix=/home/user/path $URL
 
 -- Messing with mime
 
